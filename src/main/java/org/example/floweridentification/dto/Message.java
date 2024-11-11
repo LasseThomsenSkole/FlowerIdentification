@@ -1,8 +1,5 @@
-
 package org.example.floweridentification.dto;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -10,24 +7,39 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "role",
         "content",
+        "image_url",  // Add image_url field
         "refusal"
 })
-
 public class Message {
 
     @JsonProperty("role")
     private String role;
+
     @JsonProperty("content")
     private String content;
+
+    @JsonProperty("image_url")
+    private ImageURL imageUrl;  // Add imageUrl field
+
     @JsonProperty("refusal")
     private Object refusal;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new LinkedHashMap<>();
+    public Message() {
+    }
+    public Message(String role, String content, ImageURL imageUrl) {
+        this.role = role;
+        this.content = content;
+        this.imageUrl = imageUrl;
+    }
     public Message(String role, String content) {
         this.role = role;
         this.content = content;
@@ -53,6 +65,16 @@ public class Message {
         this.content = content;
     }
 
+    @JsonProperty("image_url")
+    public ImageURL getImageUrl() {
+        return imageUrl;
+    }
+
+    @JsonProperty("image_url")
+    public void setImageUrl(ImageURL imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     @JsonProperty("refusal")
     public Object getRefusal() {
         return refusal;
@@ -72,5 +94,4 @@ public class Message {
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
     }
-
 }
