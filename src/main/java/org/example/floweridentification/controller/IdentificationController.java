@@ -34,12 +34,12 @@ public class IdentificationController {
         // Create text content
         Content textContent = new Content();
         textContent.setType("text");
-        textContent.setText("What’s in this image?");
+        textContent.setText("Identify the flower in the image");
 
         // Create image URL content
         Content imageContent = new Content();
         imageContent.setType("image_url");
-        imageContent.setImageUrl((new ImageUrl());
+        imageContent.setImageUrl(new ImageUrl(imageUrl));
 
         // Create and populate the message
         List<Content> contentList = new ArrayList<>();
@@ -49,6 +49,9 @@ public class IdentificationController {
         Message message = new Message();
         message.setRole("user");
         message.setContent(contentList);
+
+        List<Message> messages = new ArrayList<>();
+        messages.add(message);
 
         chatRequest.setMessages(messages);
         chatRequest.setMaxTokens(300);
@@ -65,7 +68,7 @@ public class IdentificationController {
         Usage usg = response.getUsage();
 
         Map<String, Object> map = new HashMap<>();
-        //map.put("request", chatRequest);
+        //map.put("request", chatRequest); DEBUG TING
         map.put("Usage", usg);
         map.put("Choices", lst);
 
