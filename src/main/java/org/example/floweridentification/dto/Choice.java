@@ -23,7 +23,7 @@ public class Choice {
     @JsonProperty("index")
     private Integer index;
     @JsonProperty("message")
-    private Message message;
+    private ResponseMessage responseMessage;
     @JsonProperty("logprobs")
     private Object logprobs;
     @JsonProperty("finish_reason")
@@ -42,13 +42,13 @@ public class Choice {
     }
 
     @JsonProperty("message")
-    public Message getMessage() {
-        return message;
+    public ResponseMessage getMessage() {
+        return responseMessage;
     }
 
     @JsonProperty("message")
-    public void setMessage(Message message) {
-        this.message = message;
+    public void setMessage(ResponseMessage responseMessage) {
+        this.responseMessage = responseMessage;
     }
 
     @JsonProperty("logprobs")
