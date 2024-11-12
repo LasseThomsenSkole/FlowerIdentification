@@ -1,11 +1,15 @@
 package org.example.floweridentification.dto;
-
-import com.fasterxml.jackson.annotation.*;
-
-import javax.annotation.processing.Generated;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import javax.annotation.processing.Generated;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -14,7 +18,8 @@ import java.util.Map;
         "created",
         "model",
         "choices",
-        "usage"
+        "usage",
+        "system_fingerprint"
 })
 @Generated("jsonschema2pojo")
 public class ChatResponse {
@@ -31,6 +36,8 @@ public class ChatResponse {
     private List<Choice> choices;
     @JsonProperty("usage")
     private Usage usage;
+    @JsonProperty("system_fingerprint")
+    private String systemFingerprint;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
@@ -94,6 +101,16 @@ public class ChatResponse {
         this.usage = usage;
     }
 
+    @JsonProperty("system_fingerprint")
+    public String getSystemFingerprint() {
+        return systemFingerprint;
+    }
+
+    @JsonProperty("system_fingerprint")
+    public void setSystemFingerprint(String systemFingerprint) {
+        this.systemFingerprint = systemFingerprint;
+    }
+
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
@@ -105,3 +122,6 @@ public class ChatResponse {
     }
 
 }
+
+
+

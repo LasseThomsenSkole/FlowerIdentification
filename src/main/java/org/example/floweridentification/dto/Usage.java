@@ -2,6 +2,7 @@ package org.example.floweridentification.dto;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -17,7 +18,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "prompt_tokens_details",
         "completion_tokens_details"
 })
-
 public class Usage {
 
     @JsonProperty("prompt_tokens")
@@ -94,3 +94,4 @@ public class Usage {
     }
 
 }
+

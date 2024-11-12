@@ -2,7 +2,6 @@ package org.example.floweridentification.dto;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -12,36 +11,49 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "cached_tokens",
-        "audio_tokens"
+        "type",
+        "text",
+        "image_url"
 })
-public class PromptTokensDetails {
+public class Content {
 
-    @JsonProperty("cached_tokens")
-    private Integer cachedTokens;
-    @JsonProperty("audio_tokens")
-    private Integer audioTokens;
+    @JsonProperty("type")
+    private String type;
+    @JsonProperty("text")
+    private String text;
+    @JsonProperty("image_url")
+    private ImageUrl imageUrl;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
-    @JsonProperty("cached_tokens")
-    public Integer getCachedTokens() {
-        return cachedTokens;
+    @JsonProperty("type")
+    public String getType() {
+        return type;
     }
 
-    @JsonProperty("cached_tokens")
-    public void setCachedTokens(Integer cachedTokens) {
-        this.cachedTokens = cachedTokens;
+    @JsonProperty("type")
+    public void setType(String type) {
+        this.type = type;
     }
 
-    @JsonProperty("audio_tokens")
-    public Integer getAudioTokens() {
-        return audioTokens;
+    @JsonProperty("text")
+    public String getText() {
+        return text;
     }
 
-    @JsonProperty("audio_tokens")
-    public void setAudioTokens(Integer audioTokens) {
-        this.audioTokens = audioTokens;
+    @JsonProperty("text")
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    @JsonProperty("image_url")
+    public ImageUrl getImageUrl() {
+        return imageUrl;
+    }
+
+    @JsonProperty("image_url")
+    public void setImageUrl(ImageUrl imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @JsonAnyGetter

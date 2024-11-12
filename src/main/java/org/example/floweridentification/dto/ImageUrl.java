@@ -2,7 +2,6 @@ package org.example.floweridentification.dto;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -12,36 +11,26 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "cached_tokens",
-        "audio_tokens"
+        "url"
 })
-public class PromptTokensDetails {
+public class ImageUrl {
 
-    @JsonProperty("cached_tokens")
-    private Integer cachedTokens;
-    @JsonProperty("audio_tokens")
-    private Integer audioTokens;
+    @JsonProperty("url")
+    private String url;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
-
-    @JsonProperty("cached_tokens")
-    public Integer getCachedTokens() {
-        return cachedTokens;
+    public ImageUrl() {}
+    public ImageUrl(String url) {
+        this.url = url;
+    }
+    @JsonProperty("url")
+    public String getUrl() {
+        return url;
     }
 
-    @JsonProperty("cached_tokens")
-    public void setCachedTokens(Integer cachedTokens) {
-        this.cachedTokens = cachedTokens;
-    }
-
-    @JsonProperty("audio_tokens")
-    public Integer getAudioTokens() {
-        return audioTokens;
-    }
-
-    @JsonProperty("audio_tokens")
-    public void setAudioTokens(Integer audioTokens) {
-        this.audioTokens = audioTokens;
+    @JsonProperty("url")
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @JsonAnyGetter

@@ -27,18 +27,28 @@ public class IdentificationController {
         return apikey;
     }
     @GetMapping("/identify")
-    public Map<String, Object> chatWithGPT() {
+    public Map<String, Object> chatWithGPT() { // der her skal være i metode for sig selv
         String imageUrl = "https://harkness-roses.s3.amazonaws.com/700/530920.jpg";
         ChatRequest chatRequest = new ChatRequest();
         chatRequest.setModel("gpt-4o");
-        List<Message> messages = new ArrayList<>();
-        messages.add(new Message("system", "You are a flower expert and your purpose is to help me identify a flower."));
-        messages.add(new Message("user", "I have a picture of a flower. Can you help me identify it?"));
+        // Create text content
+        Content textContent = new Content();
+        textContent.setType("text");
+        textContent.setText("What’s in this image?");
 
-        // Correct way to include image
-        Message userMessageWithImage = new Message("user", "What's in this image?");
-        userMessageWithImage.setImageUrl(new ImageURL(imageUrl));
-        messages.add(userMessageWithImage);
+        // Create image URL content
+        Content imageContent = new Content();
+        imageContent.setType("image_url");
+        imageContent.setImageUrl((new ImageUrl());
+
+        // Create and populate the message
+        List<Content> contentList = new ArrayList<>();
+        contentList.add(textContent);
+        contentList.add(imageContent);
+
+        Message message = new Message();
+        message.setRole("user");
+        message.setContent(contentList);
 
         chatRequest.setMessages(messages);
         chatRequest.setMaxTokens(300);
@@ -55,7 +65,7 @@ public class IdentificationController {
         Usage usg = response.getUsage();
 
         Map<String, Object> map = new HashMap<>();
-        map.put("request", chatRequest);
+        //map.put("request", chatRequest);
         map.put("Usage", usg);
         map.put("Choices", lst);
 

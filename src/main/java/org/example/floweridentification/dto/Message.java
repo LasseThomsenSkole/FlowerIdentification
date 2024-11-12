@@ -1,5 +1,8 @@
 package org.example.floweridentification.dto;
 
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -7,43 +10,18 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "role",
-        "content",
-        "image_url",  // Add image_url field
-        "refusal"
+        "content"
 })
 public class Message {
-
     @JsonProperty("role")
     private String role;
-
     @JsonProperty("content")
-    private String content;
-
-    @JsonProperty("image_url")
-    private ImageURL imageUrl;  // Add imageUrl field
-
-    @JsonProperty("refusal")
-    private Object refusal;
-
+    private List<Content> content;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new LinkedHashMap<>();
-    public Message() {
-    }
-    public Message(String role, String content, ImageURL imageUrl) {
-        this.role = role;
-        this.content = content;
-        this.imageUrl = imageUrl;
-    }
-    public Message(String role, String content) {
-        this.role = role;
-        this.content = content;
-    }
+    private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
     @JsonProperty("role")
     public String getRole() {
@@ -56,33 +34,13 @@ public class Message {
     }
 
     @JsonProperty("content")
-    public String getContent() {
+    public List<Content> getContent() {
         return content;
     }
 
     @JsonProperty("content")
-    public void setContent(String content) {
+    public void setContent(List<Content> content) {
         this.content = content;
-    }
-
-    @JsonProperty("image_url")
-    public ImageURL getImageUrl() {
-        return imageUrl;
-    }
-
-    @JsonProperty("image_url")
-    public void setImageUrl(ImageURL imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    @JsonProperty("refusal")
-    public Object getRefusal() {
-        return refusal;
-    }
-
-    @JsonProperty("refusal")
-    public void setRefusal(Object refusal) {
-        this.refusal = refusal;
     }
 
     @JsonAnyGetter
@@ -94,4 +52,5 @@ public class Message {
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
     }
+
 }

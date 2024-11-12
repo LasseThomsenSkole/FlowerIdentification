@@ -1,7 +1,9 @@
 package org.example.floweridentification.dto;
 
+
 import java.util.LinkedHashMap;
 import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -16,7 +18,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "logprobs",
         "finish_reason"
 })
-
 public class Choice {
 
     @JsonProperty("index")
@@ -81,3 +82,4 @@ public class Choice {
     }
 
 }
+

@@ -2,6 +2,7 @@ package org.example.floweridentification.dto;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import javax.annotation.processing.Generated;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -12,36 +13,50 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "cached_tokens",
-        "audio_tokens"
+        "role",
+        "content",
+        "refusal"
 })
-public class PromptTokensDetails {
+@Generated("jsonschema2pojo")
+public class ResponseMessage {
 
-    @JsonProperty("cached_tokens")
-    private Integer cachedTokens;
-    @JsonProperty("audio_tokens")
-    private Integer audioTokens;
+    @JsonProperty("role")
+    private String role;
+    @JsonProperty("content")
+    private String content;
+    @JsonProperty("refusal")
+    private Object refusal;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
-    @JsonProperty("cached_tokens")
-    public Integer getCachedTokens() {
-        return cachedTokens;
+    @JsonProperty("role")
+    public String getRole() {
+        return role;
     }
 
-    @JsonProperty("cached_tokens")
-    public void setCachedTokens(Integer cachedTokens) {
-        this.cachedTokens = cachedTokens;
+    @JsonProperty("role")
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    @JsonProperty("audio_tokens")
-    public Integer getAudioTokens() {
-        return audioTokens;
+    @JsonProperty("content")
+    public String getContent() {
+        return content;
     }
 
-    @JsonProperty("audio_tokens")
-    public void setAudioTokens(Integer audioTokens) {
-        this.audioTokens = audioTokens;
+    @JsonProperty("content")
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    @JsonProperty("refusal")
+    public Object getRefusal() {
+        return refusal;
+    }
+
+    @JsonProperty("refusal")
+    public void setRefusal(Object refusal) {
+        this.refusal = refusal;
     }
 
     @JsonAnyGetter
@@ -55,4 +70,3 @@ public class PromptTokensDetails {
     }
 
 }
-
