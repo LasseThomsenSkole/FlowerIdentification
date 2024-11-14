@@ -2,12 +2,11 @@ package org.example.floweridentification.controller;
 
 import org.example.floweridentification.dto.*;
 import org.example.floweridentification.service.ChatGPTService;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +23,7 @@ public class IdentificationController {
         this.webClient = webClientBuilder.baseUrl("https://api.openai.com/v1/chat/completions").build();
         this.gptService = gptService;
     }
-
+    @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("/identify")
     public Map<String, Object> chatWithGPT(@RequestBody Map<String, String> requestBody) {
         String imageUrl = requestBody.get("imageUrl");
