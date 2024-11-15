@@ -24,7 +24,7 @@ public class ChatGPTService {
         // Create text content
         Content textContent = new Content();
         textContent.setType("text");
-        textContent.setText("Identify the flower in the image, ONLY ANSWER WITH THE NAME OF THE FLOWER BOTH ENGLISH AND LATIN");
+        textContent.setText("Identify the flower in the image, ONLY ANSWER WITH THE NAME OF THE FLOWER BOTH ENGLISH AND LATIN WITH A COMMA IN BETWEEN");
 
         // Create image URL content
         Content imageContent = new Content();
